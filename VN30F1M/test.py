@@ -14,7 +14,7 @@ n_bins = 24
 # --- Tạo bins ---
 bins = np.linspace(low_price, high_price, n_bins + 1)
 bin_centers = (bins[:-1] + bins[1:]) / 2
-volume_profile = pd.Series(0, index=bin_centers)
+volume_profile = pd.Series(0.0, index=bin_centers)
 
 # --- Phân bổ volume vào bins ---
 for _, row in df.iterrows():
@@ -42,8 +42,8 @@ print(f"VAL: {val:.2f}")
 plt.figure(figsize=(8,6))
 plt.barh(volume_profile.index, volume_profile.values, height=(bins[1]-bins[0])*0.9, color='skyblue')
 plt.axhline(poc_price, color='red', linestyle='--', label=f'POC {poc_price:.2f}')
-plt.axhline(vah, color='green', linestyle='--', label=f'VAH {vah:.2f}')
-plt.axhline(val, color='orange', linestyle='--', label=f'VAL {val:.2f}')
+# plt.axhline(vah, color='green', linestyle='--', label=f'VAH {vah:.2f}')
+# plt.axhline(val, color='orange', linestyle='--', label=f'VAL {val:.2f}')
 plt.xlabel("Volume")
 plt.ylabel("Price")
 plt.title("Volume Profile (24 bins)")
